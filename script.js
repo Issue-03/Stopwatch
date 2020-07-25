@@ -4,6 +4,7 @@ let timerObj  = {
   timerId: 0
 }
 
+// to play sound on time up
 function soundAlarm(){
   let amount = 3;
   let audio = new Audio("Sound.mp3")
@@ -19,10 +20,11 @@ function soundAlarm(){
   }
 }
 
+// to update value in html as timer plays
 function updateValue(key,value){
     if(value < 0){
       value = 0;
-      console.log("Positive Numbers Only")
+      console.log("Positive Numbers Only");
     }
     if(key=="secs"){
       if(value < 10){
@@ -35,11 +37,9 @@ function updateValue(key,value){
 
     $("#" + key).html(value || 0)
     timerObj[key] = value
-
-    // console.log("Min: ",timerObj.mins)
-    // console.log("Sec: ",timerObj.secs)
 }
 
+// self calling function to detect changes
 (function detectChanges(key){
 
   let input = "#" + key + "p"
